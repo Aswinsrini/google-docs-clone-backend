@@ -1,8 +1,9 @@
 const mongoose = require("mongoose");
 const Document = require("./document");
+require("dotenv").config();
 
 mongoose
-  .connect("mongodb://127.0.0.1:27017/google-docs")
+  .connect(process.env.DATABASE_URI)
   .then(() => console.log("Connected to the db"))
   .catch(() => console.log("not connected to db"));
 
