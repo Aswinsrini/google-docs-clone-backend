@@ -2,10 +2,15 @@ const mongoose = require("mongoose");
 const Document = require("./document");
 require("dotenv").config();
 
-mongoose
-  .connect(process.env.DATABASE_URI)
-  .then(() => console.log("Connected to the db"))
-  .catch(() => console.log("not connected to db"));
+const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.DATABASE_URI);
+    console.log("connected to db");
+  } catch (e) {
+    console.log(e);
+  }
+};
+connectDB();
 
 const io = require("socket.io")(3000, {
   cors: {
