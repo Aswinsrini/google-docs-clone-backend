@@ -17,7 +17,7 @@ connectDB();
 
 const io = require("socket.io")(3000, {
   cors: {
-    origin: "https://aswin-docs-clone.onrender.com",
+    origin: "*",
     methods: ["GET", "POST"],
   },
 });
@@ -47,8 +47,6 @@ async function findOrCreate(id) {
 
   const doc = await Document.findById(id);
   if (doc) {
-    console.log(doc);
-    console.log(doc.data);
     return doc;
   }
   return await Document.create({ _id: id, data: defaultValue });

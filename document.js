@@ -5,4 +5,4 @@ const document = new Schema({
   data: Object,
 });
 
-module.exports = model("document", document);
+module.exports = model("documents", document);
