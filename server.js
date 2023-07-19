@@ -6,7 +6,6 @@ const connectDB = async () => {
   try {
     console.log("object");
     await mongoose.connect(
-      // "mongodb+srv://aswin:kingaswin999@cluster0.21ynpli.mongodb.net/?retryWrites=true&w=majority"
       "mongodb+srv://aswinsrinivasan2004:kingaswin999@cluster0.56fwxsp.mongodb.net/"
     );
     console.log("connected to db");
@@ -47,6 +46,10 @@ async function findOrCreate(id) {
   if (id == null) return;
 
   const doc = await Document.findById(id);
-  if (doc) return doc;
+  if (doc) {
+    console.log(doc);
+    console.log(doc.data);
+    return doc;
+  }
   return await Document.create({ _id: id, data: defaultValue });
 }
