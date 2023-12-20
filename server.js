@@ -1,14 +1,29 @@
 const mongoose = require("mongoose");
 const Document = require("./document");
+const MongoClient = require("mongodb").MongoClient;
 require("dotenv").config();
+const client = new MongoClient(
+  "mongodb+srv://aswinsrinivasan2004:kingaswin999@cluster0.56fwxsp.mongodb.net/"
+);
 
 const connectDB = async () => {
   try {
     console.log("object");
+
     await mongoose.connect(
       "mongodb+srv://aswinsrinivasan2004:kingaswin999@cluster0.56fwxsp.mongodb.net/"
     );
-    console.log("connected to db");
+    console.log("connected to db 2");
+
+    const db = mongoose.connection;
+
+    // Bind connection to error event (to get notifications of connection errors)
+    db.on("error", console.error.bind(console, "MongoDB connection error:"));
+
+    // Once connected
+    db.once("open", function () {
+      console.log("Connected successfully to MongoDB Atlas");
+    });
   } catch (e) {
     console.log(e);
   }
