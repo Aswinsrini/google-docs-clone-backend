@@ -17,6 +17,7 @@
     "mongoose": "^7.3.4",
     "socket.io": "^4.7.2"
   },
+  "RootDirectory": "server",
   "devDependencies": {
     "nodemon": "^3.0.2"
   }
